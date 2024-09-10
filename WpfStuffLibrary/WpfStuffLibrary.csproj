@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-preview.7.24405.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StuffClassLibrary\StuffClassLibrary.csproj" />
+    <ProjectReference Include="..\StuffInterfaceLibrary\StuffInterfaceLibrary.csproj" />
+    <ProjectReference Include="..\WpfStuffInterfaceLibrary\WpfStuffInterfaceLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
