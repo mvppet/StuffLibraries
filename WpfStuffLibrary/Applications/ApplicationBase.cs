@@ -9,9 +9,11 @@ namespace WpfStuffLibrary.Applications;
 public class ApplicationBase : Application
 {
 	protected IServiceProvider ServiceProvider { get; }
+	protected Assembly Assembly { get; }
 
-	public ApplicationBase()
+	public ApplicationBase(Assembly assembly)
 	{
+		Assembly = assembly;
 		IServiceCollection serviceCollection = new ServiceCollection();
 
 		AddRequiredServices(serviceCollection);
@@ -24,10 +26,10 @@ public class ApplicationBase : Application
 	{
 	}
 
-	protected void OpenMainWindows(Assembly assembly)
+	protected override void OnStartup(StartupEventArgs e)
 	{
 		// get the IMain windows
-		var mainWindowTypes = assembly.GetTypes()
+		var mainWindowTypes = Assembly.GetTypes()
 			.Where(mytype => mytype.GetInterfaces()
 				.Contains(typeof(IMainWindow)
 			)
