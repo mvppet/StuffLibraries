@@ -1,11 +1,18 @@
 ﻿using System.Windows;
 using StuffInterfaceLibrary.Events;
 using WpfStuffInterfaceLibrary.Enums;
+using WpfStuffInterfaceLibrary.ViewModels;
 using WpfStuffInterfaceLibrary.Windows;
 
 namespace WpfStuffLibrary.Windows;
 public class WindowBase : Window, IWindow
 {
+	public IViewModel? ViewModel
+	{
+		get => (IViewModel)DataContext;
+		set => DataContext = value;
+	}
+
 	protected IEventAggregator? EventAggregator { get; }
 
 	public WindowBase(IEventAggregator eventAggregator)

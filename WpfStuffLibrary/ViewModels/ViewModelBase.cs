@@ -1,51 +1,26 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using StuffInterfaceLibrary.Events;
+﻿using StuffInterfaceLibrary.Events;
 using WpfStuffInterfaceLibrary.ViewModels;
 
 namespace WpfStuffLibrary.ViewModels;
 
-public class ViewModelBase : DependencyObject, INotifyPropertyChanged
+public class ViewModelBase : SimpleViewModelBase
 {
-	protected IEventAggregator? EventAggregator { get; }
-	protected IViewModelFactory? ViewModelFactory { get; }
+	public IEventAggregator? EventAggregator { get; set; }
+	public IViewModelFactory? ViewModelFactory { get; set; }
 
-	public ViewModelBase(IEventAggregator? eventAggregator = null, IViewModelFactory? viewModelFactory = null)
+	public ViewModelBase(IEventAggregator eventAggregator, IViewModelFactory viewModelFactory)
 	{
 		EventAggregator = eventAggregator;
 		ViewModelFactory = viewModelFactory;
 	}
 
-
-	#region  INotifyPropertyChanged
-
-	public event PropertyChangedEventHandler? PropertyChanged;
-
-	//protected void NotifyPropertyChanged<T>(Expression<Func<T>> propertyExpression)
-	//	=> NotifyPropertyChanged((propertyExpression.Body as MemberExpression)?.Member?.Name ?? string.Empty);
-
-	//protected void NotifyPropertyChanged(string name)
-	//	=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-	//protected void NotifyPropertyChanged()
-	//	=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(string.Empty));
-
-	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+	public ViewModelBase(IEventAggregator eventAggregator)
 	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		EventAggregator = eventAggregator;
 	}
 
-	protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = "")
+	public ViewModelBase(IViewModelFactory viewModelFactory)
 	{
-		if (EqualityComparer<T>.Default.Equals(storage, value))
-		{
-			return false;
-		}
-		storage = value;
-		this.OnPropertyChanged(propertyName);
-		return true;
+		ViewModelFactory = viewModelFactory;
 	}
-
-	#endregion
 }

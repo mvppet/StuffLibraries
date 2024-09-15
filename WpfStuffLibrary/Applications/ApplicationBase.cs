@@ -2,6 +2,7 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using WpfStuffInterfaceLibrary.Enums;
+using WpfStuffInterfaceLibrary.ViewModels;
 using WpfStuffInterfaceLibrary.Windows;
 
 namespace WpfStuffLibrary.Applications;
@@ -28,6 +29,19 @@ public class ApplicationBase : Application
 
 	protected override void OnStartup(StartupEventArgs e)
 	{
+		var vm = GetMainViewModelFromIoC();
+		OpenMainWindows(vm);
+	}
+
+	private void AddRequiredServices(IServiceCollection services)
+	{
+	}
+
+	private IMainViewModel? GetMainViewModelFromIoC()
+		=> ServiceProvider.GetService<IMainViewModel>();
+
+	private void OpenMainWindows(IMainViewModel? vm)
+	{
 		// get the IMain windows
 		var mainWindowTypes = Assembly.GetTypes()
 			.Where(mytype => mytype.GetInterfaces()
@@ -38,11 +52,11 @@ public class ApplicationBase : Application
 		foreach (Type type in mainWindowTypes)
 		{
 			IMainWindow? window = (IMainWindow?)Activator.CreateInstance(type);
-			window?.Show(WindowTypes.NonModal);
+			if (window != null)
+			{
+				window.ViewModel = vm;
+				window.Show(WindowTypes.NonModal);
+			}
 		}
-	}
-
-	private void AddRequiredServices(IServiceCollection services)
-	{
 	}
 }
