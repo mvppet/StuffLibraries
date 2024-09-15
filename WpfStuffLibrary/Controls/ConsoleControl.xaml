@@ -15,7 +15,16 @@
 			<Setter Property="Background" Value="Black" />
 			<Setter Property="CornerRadius" Value="5" />
 			<Setter Property="Padding" Value="5 3" />
-			<Setter Property="Margin" Value="2" />
+			<Setter Property="Margin" Value="2 2 2 2" />
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect BlurRadius="3"
+                    ShadowDepth="2"
+                    Direction="300"
+                    Color="Black"
+                    Opacity="0.5" />
+				</Setter.Value>
+			</Setter>
 		</Style>
 
 		<Style x:Key="ConsoleTextBase" TargetType="TextBlock">
