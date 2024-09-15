@@ -2,6 +2,11 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:sys="clr-namespace:System;assembly=mscorlib"
 >
-	<sys:Double x:Key = "SmallInputFontSize">12</sys:Double>
+	<sys:Double x:Key="SmallInputFontSize">14</sys:Double>
+	<CornerRadius x:Key="ButtonRounding">15</CornerRadius>
+	<CornerRadius x:Key="TextBlockBorderRounding">10</CornerRadius>
+	<CornerRadius x:Key="TextBlockRounding">8</CornerRadius>
+	<CornerRadius x:Key="TextBoxRounding">8</CornerRadius>
+	<GridLength x:Key="SmallGridSpace">5</GridLength>
 
 </ResourceDictionary>

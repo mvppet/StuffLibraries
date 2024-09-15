@@ -2,6 +2,179 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 >
 	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="InputStuff/ButtonStuff.xaml" />
+		<ResourceDictionary Source="Constants.xaml" />
 	</ResourceDictionary.MergedDictionaries>
+
+	<Style x:Key="ButtonBorder" TargetType="{x:Type Border}">
+		<Setter Property="Margin" Value="0 1" />
+		<Setter Property="Padding" Value="0 5" />
+		<Setter Property="CornerRadius" Value="{StaticResource ButtonRounding}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Color="#777" Offset="0" />
+						<GradientStop Color="Black" Offset="1" />
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Background">
+			<Setter.Value>
+				<RadialGradientBrush
+					GradientOrigin="0.2,0.2" 
+					Center="0.5,0.5"
+					RadiusX="2"
+					RadiusY="1.5"
+				>
+					<RadialGradientBrush.GradientStops>
+						<GradientStop Color="#ddd" Offset="0" />
+						<GradientStop Color="#666" Offset="1" />
+					</RadialGradientBrush.GradientStops>
+				</RadialGradientBrush>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="{x:Type Button}">
+		<Setter Property="UseLayoutRounding" Value="True" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border x:Name="bdr" Style="{StaticResource ButtonBorder}">
+						<ContentPresenter
+							VerticalAlignment="Center"
+							HorizontalAlignment="Center"
+							ContentSource="Content"
+							TextBlock.FontSize="{StaticResource SmallInputFontSize}"
+						/>
+						<Border.Effect>
+							<DropShadowEffect BlurRadius="5"
+											  ShadowDepth="2"
+											  Direction="300"
+											  Color="Black"
+											  Opacity="0.5" />
+						</Border.Effect>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="bdr" Property="Background" Value="#acf"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="TextBlockBorder" TargetType="{x:Type Border}">
+		<Setter Property="Margin" Value="0 1" />
+		<Setter Property="Padding" Value="5 2" />
+		<Setter Property="CornerRadius" Value="{StaticResource TextBlockRounding}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Color="#777" Offset="0" />
+						<GradientStop Color="Black" Offset="1" />
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Background">
+			<Setter.Value>
+				<RadialGradientBrush
+					GradientOrigin="0.2,0.2" 
+					Center="0.5,0.5"
+					RadiusX="2"
+					RadiusY="1.5"
+				>
+					<RadialGradientBrush.GradientStops>
+						<GradientStop Color="#ddd" Offset="0" />
+						<GradientStop Color="#666" Offset="1" />
+					</RadialGradientBrush.GradientStops>
+				</RadialGradientBrush>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!--<Style TargetType="TextBox">
+		<Style.Resources>
+			<Style TargetType="{x:Type Border}" >
+				<Setter Property="CornerRadius" Value="{StaticResource TextBoxRounding}" />
+			</Style>
+		</Style.Resources>
+		<Setter Property="MaxLines" Value="1" />
+		<Setter Property="Height" Value="25" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="FontSize" Value="{StaticResource SmallInputFontSize}" />
+	</Style>-->
+
+
+	<Style TargetType="{x:Type TextBox}">
+		<Setter Property="MaxLines" Value="1" />
+		<Setter Property="Height" Value="25" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="FontSize" Value="{StaticResource SmallInputFontSize}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="OverridesDefaultStyle" Value="True" />
+		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type TextBoxBase}">
+					<Border Name="Border"
+							CornerRadius="{StaticResource TextBoxRounding}"
+							Padding="2"
+							BorderThickness="1">
+						<Border.Background>
+							<SolidColorBrush Color="#eee" />
+						</Border.Background>
+						<Border.BorderBrush>
+							<SolidColorBrush Color="Black" />
+						</Border.BorderBrush>
+						<Border.Effect>
+							<DropShadowEffect BlurRadius="5"
+											  ShadowDepth="2"
+											  Direction="300"
+											  Color="Black"
+											  Opacity="0.5" />
+						</Border.Effect>
+
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<ColorAnimationUsingKeyFrames
+												Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+										>
+											<EasingColorKeyFrame KeyTime="0" Value="#555" />
+										</ColorAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="ReadOnly">
+									<Storyboard>
+										<ColorAnimationUsingKeyFrames
+												Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+										>
+											<EasingColorKeyFrame KeyTime="0" Value="#ddd" />
+										</ColorAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="MouseOver" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

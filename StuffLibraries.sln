@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfStuffInterfaceLibrary", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfStuffLibrary", "WpfStuffLibrary\WpfStuffLibrary.csproj", "{B59FB9F9-2253-4B4D-A2F7-86477A8E15A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerStuff", "SqlServerStuff\SqlServerStuff.csproj", "{D891A989-DD39-44DF-BF73-FF6A147CC941}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B59FB9F9-2253-4B4D-A2F7-86477A8E15A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B59FB9F9-2253-4B4D-A2F7-86477A8E15A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B59FB9F9-2253-4B4D-A2F7-86477A8E15A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D891A989-DD39-44DF-BF73-FF6A147CC941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D891A989-DD39-44DF-BF73-FF6A147CC941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D891A989-DD39-44DF-BF73-FF6A147CC941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D891A989-DD39-44DF-BF73-FF6A147CC941}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

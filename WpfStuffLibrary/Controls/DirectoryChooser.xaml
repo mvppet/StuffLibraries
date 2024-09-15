@@ -1,0 +1,35 @@
+﻿<local:UserControlBase
+	x:Class="WpfStuffLibrary.Controls.DirectoryChooser"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:local="clr-namespace:WpfStuffLibrary.Controls"
+	mc:Ignorable="d" 
+	d:DesignHeight="45" d:DesignWidth="400"
+	xmlns:dvm="clr-namespace:WpfStuffLibrary.ViewModels.DesignTime"
+	d:DataContext="{d:DesignInstance {x:Type dvm:DesignTimeFolderChooserViewModel}, IsDesignTimeCreatable=True}"
+>
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/WpfStuffLibrary;component/Resources/InputStuffCollection.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="35" />
+		</Grid.ColumnDefinitions>
+
+		<TextBox Grid.Column="0" Text="{Binding FolderName}" />
+		<Button Grid.Column="2" Height="25" Margin="5 0 0 0" Padding="0" Command="{Binding ButtonClicked}">
+			<Button.Content>
+				<TextBlock Margin="0 -3 0 0" Text="..." />
+			</Button.Content>
+		</Button>
+
+	</Grid>
+</local:UserControlBase>
