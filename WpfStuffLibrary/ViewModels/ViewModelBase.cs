@@ -23,4 +23,9 @@ public class ViewModelBase : SimpleViewModelBase
 	{
 		ViewModelFactory = viewModelFactory;
 	}
+
+	public ViewModelBase()
+		: base()
+	{
+	}
 }

@@ -15,6 +15,13 @@ public class ConsoleViewModel : ViewModelBase, IConsoleViewModel
 	{
 	}
 
+	// design-time
+	public ConsoleViewModel()
+	: base()
+	{
+	}
+
+
 	public void Add(string text)
 	{
 		LogLines.Add(new ConsoleLineViewModel(text));

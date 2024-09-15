@@ -30,6 +30,14 @@ public class FolderChooserViewModel : SimpleViewModelBase, IViewModel
 		ButtonClicked = new ActionCommand(ShowFolderDialog);
 	}
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+	// design-time
+	public FolderChooserViewModel()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+	{
+	}
+
+
 	private void ShowFolderDialog()
 	{
 		if (ShowDialog())
