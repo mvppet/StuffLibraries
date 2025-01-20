@@ -1,8 +1,7 @@
 ﻿namespace StuffInterfaceLibrary.IO;
 public interface IFileOperations
 {
-	IFileDetails ReadFileDetailsWithChecksum(string filename);
-	Task<IFileDetails> ReadFileDetailsWithChecksumAsync(string filename);
-
+	IFileDetails ReadFileDetails(string filename);
 	long FileSize(string filename);
+	string GetChecksum(string filename);
 }

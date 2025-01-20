@@ -24,11 +24,15 @@ public class ConsoleViewModel : ViewModelBase, IConsoleViewModel
 
 	public void Add(string text)
 	{
-		LogLines.Add(new ConsoleLineViewModel(text));
+		Dispatcher.Invoke(() =>
+			LogLines.Add(new ConsoleLineViewModel(text))
+		);
 	}
 	public void Add(IConsoleLineViewModel logItem)
 	{
-		LogLines.Add(logItem);
+		Dispatcher.Invoke(() =>
+			LogLines.Add(logItem)
+		);
 	}
 
 	// TODO : make things coloured depending on meesage type
